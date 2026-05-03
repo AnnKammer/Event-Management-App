@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.StudentCalendarController"
+            prefWidth="900" prefHeight="600">
+
+    <!-- Top: title + back + nav buttons -->
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="10" left="15" right="15" bottom="10"/>
+            </padding>
+
+            <!-- Title row -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="⟵ Home"
+                        onAction="#goHome"/>
+                <Label text="Event Calendar"
+                       style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Optional nav buttons (student / organizer / admin) -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button text="Student Dashboard"
+                        onAction="#goStudentDashboard"/>
+                <Button text="Organizer Dashboard"
+                        onAction="#goOrganizerDashboard"/>
+                <Button text="Admin Dashboard"
+                        onAction="#goAdminDashboard"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center: filters + table -->
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="5" left="15" right="15" bottom="15"/>
+            </padding>
+
+            <!-- Filters row -->
+            <TitledPane text="Filter Events" collapsible="false">
+                <content>
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <padding>
+                            <Insets top="10" left="10" right="10" bottom="10"/>
+                        </padding>
+
+                        <VBox spacing="5">
+                            <Label text="Date"/>
+                            <DatePicker fx:id="dateFilter"/>
+                        </VBox>
+
+                        <VBox spacing="5">
+                            <Label text="Category"/>
+                            <ComboBox fx:id="categoryFilter" prefWidth="150"/>
+                        </VBox>
+
+                        <VBox spacing="5">
+                            <Label text="Location"/>
+                            <TextField fx:id="locationFilter"
+                                       promptText="Search location..."
+                                       prefWidth="180"/>
+                        </VBox>
+
+                        <Pane HBox.hgrow="ALWAYS"/>
+
+                        <VBox alignment="BOTTOM_RIGHT">
+                            <Button text="Clear Filters" onAction="#clearFilters"/>
+                        </VBox>
+                    </HBox>
+                </content>
+            </TitledPane>
+
+            <Label text="Events by Date"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <!-- Calendar events table -->
+            <TableView fx:id="eventsTable"
+                       VBox.vgrow="ALWAYS"
+                       prefHeight="400">
+
+                <columns>
+                    <TableColumn fx:id="titleCol"
+                                 text="Title"
+                                 prefWidth="200"/>
+                    <TableColumn fx:id="categoryCol"
+                                 text="Category"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="dateCol"
+                                 text="Start Date"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="locationCol"
+                                 text="Location"
+                                 prefWidth="180"/>
+                    <TableColumn fx:id="statusCol"
+                                 text="Status"
+                                 prefWidth="100"/>
+                </columns>
+
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

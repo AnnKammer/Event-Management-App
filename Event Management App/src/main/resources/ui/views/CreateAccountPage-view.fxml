@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.CreateAccountPageController"
+            prefWidth="900.0" prefHeight="600.0">
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="24.0">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- Title -->
+            <Label text="Create Account"
+                   style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+
+            <!-- Optional helper text -->
+            <Label text="Please enter your details below to create a new account."
+                   style="-fx-font-size: 14px;"/>
+
+            <!-- Form layout -->
+            <GridPane hgap="10.0" vgap="12.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150.0" halignment="RIGHT"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- First name -->
+                <Label text="First name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="firstnameInput"
+                           promptText="Enter your first name"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <!-- Surname -->
+                <Label text="Surname:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="surnameInput"
+                           promptText="Enter your surname"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <!-- Email -->
+                <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="emailInput"
+                           promptText="Enter your university email"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <!-- Password -->
+                <Label text="Password:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <PasswordField fx:id="createPasswordInput"
+                               promptText="At least 8 characters"
+                               GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <!-- Roles header -->
+                <Label text="Roles:"
+                       style="-fx-font-weight: bold;"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+
+                <!-- Student role -->
+                <Label text="Student" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="studentInput"
+                          prefWidth="160.0"
+                          GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                <!-- Organizer role -->
+                <Label text="Organizer" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="organizerInput"
+                          prefWidth="160.0"
+                          GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                <!-- Admin role -->
+                <Label text="Admin" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="adminInput"
+                          prefWidth="160.0"
+                          GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <!-- Submit button -->
+            <Button fx:id="ValidateLogIn"
+                    text="Create Account"
+                    onAction="#ValidateAccountInfo"
+                    style="-fx-font-size: 16px; -fx-padding: 8 24;"/>
+
+            <!-- Small note under the button -->
+            <Label text="After successful registration you will be returned to the Log In page."
+                   style="-fx-font-size: 12px; -fx-text-fill: #555555;"/>
+
+        </VBox>
+    </center>
+</BorderPane>

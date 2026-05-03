@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.OrganizerDashboardController"
+            prefWidth="1100" prefHeight="600">
+
+    <!-- Top: navigation + title -->
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="10" left="15" right="15" bottom="10"/>
+            </padding>
+
+            <!-- Navigation buttons -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button fx:id="upcomingBtn"
+                        text="Upcoming"
+                        onAction="#goUpcoming"
+                        style="-fx-font-size: 14px;"/>
+
+                <Button fx:id="studentBtn"
+                        text="Student"
+                        onAction="#goStudent"
+                        style="-fx-font-size: 14px;"/>
+
+                <Button fx:id="organizerBtn"
+                        text="Organizer"
+                        onAction="#goOrganizer"
+                        style="-fx-font-size: 14px;"/>
+
+                <Button fx:id="adminBtn"
+                        text="Admin"
+                        onAction="#goAdmin"
+                        style="-fx-font-size: 14px;"/>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+
+            <!-- Page title + main action -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="Organizer Dashboard"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+                <Button text="Create New Event"
+                        onAction="#handleCreateEvent"
+                        style="-fx-font-size: 14px; -fx-padding: 6 16;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center: table -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="5" left="15" right="15" bottom="15"/>
+            </padding>
+
+            <Label text="My Events"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="eventsTable"
+                       VBox.vgrow="ALWAYS"
+                       prefHeight="450">
+
+                <columns>
+                    <TableColumn fx:id="nameCol"
+                                 text="Name"
+                                 prefWidth="250"/>
+                    <TableColumn fx:id="statusCol"
+                                 text="Status"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="organizerCol"
+                                 text="Organizer"
+                                 prefWidth="180"/>
+                    <TableColumn fx:id="dateCol"
+                                 text="Date"
+                                 prefWidth="140"/>
+                    <TableColumn fx:id="locationCol"
+                                 text="Location"
+                                 prefWidth="180"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

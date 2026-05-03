@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Team Lentil — Student Dashboard FXML (refined layout)
+  Shows event list + filtering + register/cancel actions.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.StudentDashboardController">
+
+    <!-- Top navigation bar -->
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="10" left="15" right="15" bottom="10"/>
+            </padding>
+
+            <!-- Title row -->
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Student Dashboard"
+                       style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Nav buttons row -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button fx:id="upcomingBtn"
+                        text="Upcoming"
+                        onAction="#goUpcoming"
+                        style="-fx-font-size: 14px;"/>
+
+                <Button fx:id="studentBtn"
+                        text="Student"
+                        onAction="#goStudent"
+                        style="-fx-font-size: 14px;"/>
+
+                <Button fx:id="organizerBtn"
+                        text="Organizer"
+                        onAction="#goOrganizer"
+                        style="-fx-font-size: 14px;"/>
+
+                <Button fx:id="adminBtn"
+                        text="Admin"
+                        onAction="#goAdmin"
+                        style="-fx-font-size: 14px;"/>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center content: filters + table -->
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="5" left="15" right="15" bottom="15"/>
+            </padding>
+
+            <!-- Filters -->
+            <TitledPane text="Filter Events" collapsible="false">
+                <content>
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <padding>
+                            <Insets top="10" left="10" right="10" bottom="10"/>
+                        </padding>
+
+                        <VBox spacing="5">
+                            <Label text="Date"/>
+                            <DatePicker fx:id="dateFilter"/>
+                        </VBox>
+
+                        <VBox spacing="5">
+                            <Label text="Category"/>
+                            <ComboBox fx:id="categoryFilter" prefWidth="150"/>
+                        </VBox>
+
+                        <VBox spacing="5">
+                            <Label text="Location"/>
+                            <TextField fx:id="locationFilter"
+                                       promptText="Search location..."
+                                       prefWidth="180"/>
+                        </VBox>
+
+                        <!-- Spacer -->
+                        <Pane HBox.hgrow="ALWAYS"/>
+
+                        <VBox alignment="BOTTOM_RIGHT">
+                            <Button text="Clear Filters" onAction="#clearFilters"/>
+                        </VBox>
+                    </HBox>
+                </content>
+            </TitledPane>
+
+            <!-- Table label -->
+            <Label text="My Events"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <!-- Export My Events CSV -->
+            <HBox alignment="CENTER_RIGHT">
+                <Button text="Export My Events (CSV)"
+                        onAction="#handleExportMyEvents"/>
+            </HBox>
+
+
+            <!-- Events table -->
+            <TableView fx:id="eventsTable"
+                       VBox.vgrow="ALWAYS"
+                       prefHeight="400">
+
+                <columns>
+                    <TableColumn fx:id="titleCol"
+                                 text="Title"
+                                 prefWidth="180"/>
+                    <TableColumn fx:id="categoryCol"
+                                 text="Category"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="organizerCol"
+                                 text="Organizer"
+                                 prefWidth="140"/>
+                    <TableColumn fx:id="dateCol"
+                                 text="Start Date"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="locationCol"
+                                 text="Location"
+                                 prefWidth="140"/>
+                    <TableColumn fx:id="statusCol"
+                                 text="Status"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="regStatusCol"
+                                 text="Registration"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="actionCol"
+                                 text="Action"
+                                 prefWidth="140"/>
+                </columns>
+
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.NotificationCenterController"
+            prefWidth="600" prefHeight="400">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" left="10" right="10" bottom="10"/>
+            </padding>
+            <Label text="Notifications"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="notificationsTable">
+            <columns>
+                <TableColumn fx:id="dateCol" text="Date/Time" prefWidth="180"/>
+                <TableColumn fx:id="messageCol" text="Message" prefWidth="380"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets top="10" left="10" right="10" bottom="10"/>
+            </padding>
+            <Button text="Mark all as read" onAction="#handleMarkAllRead"/>
+            <Button text="Close" onAction="#handleClose"/>
+        </HBox>
+    </bottom>
+</BorderPane>
+

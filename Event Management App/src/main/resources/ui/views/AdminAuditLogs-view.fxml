@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.AdminAuditLogsController"
+            prefWidth="900" prefHeight="500">
+
+    <!-- Top: title -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" left="15" right="15" bottom="10"/>
+            </padding>
+            <Label text="Audit Logs"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- Center: table + CSV -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="5" left="15" right="15" bottom="10"/>
+            </padding>
+
+            <!-- Table -->
+            <TableView fx:id="auditTable"
+                       prefHeight="320"
+                       VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="tsCol"
+                                 text="Timestamp"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="actionCol"
+                                 text="Action"
+                                 prefWidth="90"/>
+                    <TableColumn fx:id="entityCol"
+                                 text="Entity"
+                                 prefWidth="100"/>
+                    <TableColumn fx:id="entityIdCol"
+                                 text="Entity ID"
+                                 prefWidth="80"/>
+                    <TableColumn fx:id="actorCol"
+                                 text="Actor User ID"
+                                 prefWidth="100"/>
+                    <TableColumn fx:id="detailsCol"
+                                 text="Details (JSON)"
+                                 prefWidth="300"/>
+                </columns>
+            </TableView>
+
+            <!-- Buttons + CSV area -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="refreshBtn"
+                        text="Refresh"
+                        onAction="#handleRefresh"/>
+
+                <Button fx:id="exportCsvBtn"
+                        text="Export as CSV"
+                        onAction="#handleExportCsv"/>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+
+                <Button fx:id="closeBtn"
+                        text="Close"
+                        onAction="#handleClose"/>
+            </HBox>
+
+            <Label text="CSV Preview:"
+                   style="-fx-font-weight: bold;"/>
+
+            <TextArea fx:id="csvArea"
+                      prefRowCount="5"
+                      wrapText="false"
+                      VBox.vgrow="NEVER"/>
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="uk.ac.aru.campusevents.controller.EventDetailsController"
+      alignment="CENTER"
+      spacing="15"
+      prefWidth="400" prefHeight="500">
+
+    <padding>
+        <Insets top="20" left="20" right="20" bottom="20"/>
+    </padding>
+
+    <!-- Basic event info -->
+    <Label fx:id="nameLabel"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Label fx:id="organizerLabel"/>
+    <Label fx:id="dateLabel"/>
+    <Label fx:id="locationLabel"/>
+    <Label fx:id="statusLabel"/>
+
+    <!-- Registration actions -->
+    <HBox alignment="CENTER" spacing="15">
+        <Button fx:id="registerButton"
+                text="Register"
+                onAction="#handleRegister"/>
+        <Button fx:id="unregisterButton"
+                text="Unregister"
+                onAction="#handleUnregister"/>
+    </HBox>
+
+    <Button text="Close" onAction="#closeWindow"/>
+    <Label text="Note: Registration closes the day before the event."
+           style="-fx-font-size: 11px; -fx-text-fill: #666666;"/>
+
+
+    <!-- Feedback section (visible to students after event has passed) -->
+    <Separator/>
+
+    <VBox spacing="8" alignment="CENTER_LEFT" maxWidth="Infinity">
+        <Label text="Feedback"
+               style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+        <!-- Average rating label -->
+        <Label fx:id="averageRatingLabel"
+               text="Average rating: N/A"/>
+
+        <!-- Info label explaining why feedback may be disabled -->
+        <Label fx:id="feedbackInfoLabel"
+               text=""
+               wrapText="true"/>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Your rating:"/>
+            <ComboBox fx:id="feedbackRatingBox" prefWidth="80"/>
+        </HBox>
+
+        <Label text="Your comment (optional):"/>
+
+        <TextArea fx:id="feedbackCommentArea"
+                  prefRowCount="3"
+                  wrapText="true"/>
+
+        <Button fx:id="submitFeedbackButton"
+                text="Submit Feedback"
+                onAction="#handleSubmitFeedback"/>
+    </VBox>
+
+</VBox>

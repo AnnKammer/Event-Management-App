@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.HomePageController"
+            prefWidth="900" prefHeight="600">
+
+    <!-- Top: title + welcome + notifications + logout -->
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="16" left="20" right="20" bottom="8"/>
+            </padding>
+
+            <!-- Static title -->
+            <Label text="Campus Events – Home"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+
+            <!-- Welcome + Notifications + Logout row -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label fx:id="welcomeLabel"
+                       text="Welcome to Campus Events"
+                       style="-fx-font-size: 14px;"/>
+
+                <!-- Spacer to push buttons to the right -->
+                <Pane HBox.hgrow="ALWAYS"/>
+
+                <!-- Notifications button -->
+                <Button fx:id="NotificationsButton"
+                        text="Notifications"
+                        onAction="#openNotifications"
+                        style="-fx-font-size: 12px; -fx-padding: 4 12;"/>
+
+                <!-- Logout button -->
+                <Button fx:id="logoutButton"
+                        text="Log Out"
+                        onAction="#handleLogout"
+                        style="-fx-font-size: 12px; -fx-padding: 4 12;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center: dashboard buttons + upcoming events -->
+    <center>
+        <VBox spacing="16">
+            <padding>
+                <Insets top="10" left="20" right="20" bottom="20"/>
+            </padding>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button fx:id="UpcomingEvents"
+                        text="Upcoming"
+                        onAction="#handleUpcomingEvents"/>
+
+                <!-- Calendar button -->
+                <Button text="Calendar"
+                        onAction="#openCalendar"/>
+
+                <Button fx:id="StudentDashboard"
+                        text="Student"
+                        onAction="#openStudentDashboard"/>
+                <Button fx:id="OrganizerDashboard"
+                        text="Organizer"
+                        onAction="#openOrganizerDashboard"/>
+                <Button fx:id="AdminDashboard"
+                        text="Admin"
+                        onAction="#openAdminDashboard"/>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- Dashboard title -->
+            <Label fx:id="DashboardName"
+                   text="Upcoming Events"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+
+            <!-- Upcoming Events section -->
+            <VBox spacing="8" VBox.vgrow="ALWAYS">
+                <Label text="All Events"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="UpcomingEventsTable"
+                           prefHeight="230"
+                           VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="eventNameCol"
+                                     text="Event Name"
+                                     prefWidth="220"/>
+                        <TableColumn fx:id="eventStatusCol"
+                                     text="Status"
+                                     prefWidth="90"/>
+                        <TableColumn fx:id="eventOrganizerCol"
+                                     text="Organizer"
+                                     prefWidth="200"/>
+                        <TableColumn fx:id="eventDateCol"
+                                     text="Event Date"
+                                     prefWidth="140"/>
+                        <TableColumn fx:id="eventLocationCol"
+                                     text="Location"
+                                     prefWidth="180"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+        </VBox>
+    </center>
+
+    <!-- Bottom: footer with logged-in info -->
+    <bottom>
+        <HBox alignment="CENTER_RIGHT">
+            <padding>
+                <Insets right="20" bottom="8" top="4"/>
+            </padding>
+            <Label fx:id="footerLabel"
+                   text=""
+                   style="-fx-font-size: 12px; -fx-text-fill: #555555;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

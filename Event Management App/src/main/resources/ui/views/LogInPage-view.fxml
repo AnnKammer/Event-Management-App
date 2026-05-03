@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.LogInPageController"
+            prefWidth="900" prefHeight="600">
+
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- Title -->
+            <Label text="Campus Events – Log In"
+                   style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+
+            <!-- Error label (styled in red, centered) -->
+            <Label fx:id="errorLabel"
+                   text=""
+                   wrapText="true"
+                   style="-fx-text-fill: #cc0000; -fx-font-size: 13px;"/>
+
+            <!-- Main form "card" -->
+            <VBox spacing="16"
+                  style="-fx-background-color: #f7f7f7; -fx-padding: 20; -fx-background-radius: 10;">
+
+                <!-- Link to Create Account -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Don't have an account yet?"
+                           style="-fx-font-size: 14px"/>
+                    <Button fx:id="GoToCreateAccountButton"
+                            text="Create Account"
+                            onAction="#handleCreateAccount"
+                            style="-fx-font-size: 14px;"/>
+                </HBox>
+
+                <!-- Form grid -->
+                <GridPane hgap="10" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" halignment="RIGHT"/>
+                        <ColumnConstraints minWidth="220" hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <!-- Email -->
+                    <Label text="Email:"
+                           style="-fx-font-size: 14px;"
+                           GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="emailField"
+                               promptText="your.name@example.com"
+                               GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <!-- Password -->
+                    <Label text="Password:"
+                           style="-fx-font-size: 14px;"
+                           GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <PasswordField fx:id="passwordField"
+                                   promptText="Enter your password"
+                                   onAction="#Login"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <!-- Log In button row -->
+                <HBox alignment="CENTER_RIGHT">
+                    <Button fx:id="LogInButton"
+                            text="Log In"
+                            defaultButton="true"
+                            onAction="#Login"
+                            style="-fx-font-size: 14px; -fx-padding: 6 20;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

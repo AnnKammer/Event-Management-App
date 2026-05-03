@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uk.ac.aru.campusevents.controller.CreateEventOrganizerController"
+            prefWidth="600" prefHeight="480">
+
+    <top>
+        <Label text="Create New Event"
+               style="-fx-font-size: 24px; -fx-font-weight: bold;"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <GridPane hgap="10" vgap="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="nameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="statusField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Organizer (you):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="organizerField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Date (yyyy-MM-dd):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="dateField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Location:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="locationField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Category:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="categoryBox" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="Capacity:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="capacityField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <!-- Organization-owned events -->
+            <Label text="Organization ID (optional):" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="organizationIdField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+
+            <Button text="Back"   onAction="#handleBack"/>
+            <Button text="Create" onAction="#handleCreate" style="-fx-font-weight: bold;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
